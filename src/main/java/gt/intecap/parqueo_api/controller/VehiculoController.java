@@ -4,6 +4,8 @@ package gt.intecap.parqueo_api.controller;
 import gt.intecap.parqueo_api.model.Vehiculo;
 import gt.intecap.parqueo_api.repository.VehiculoRepository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -20,5 +22,10 @@ public class VehiculoController {
     @GetMapping
     public List<Vehiculo> listar() {
         return repository.findAll();
+    }
+
+    @PostMapping
+    public Vehiculo guardar(@RequestBody Vehiculo vehiculo) {
+        return repository.save(vehiculo);
     }
 }
